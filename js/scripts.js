@@ -32,7 +32,7 @@ async function getPosts(callback) {
 }
 
 appendPost = (image, title, content) => {
-    existImg = (image !== undefined)
+    existImg = (image !== undefined && image !== null)
     var fragment = document.createDocumentFragment();
     var div = document.createElement("div");
     div.setAttribute("class", "grid-item");
