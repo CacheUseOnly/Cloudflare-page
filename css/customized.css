@@ -1,0 +1,37 @@
+.navTitle{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 36px;
+    color: white;
+}
+b {
+    font-family: 'Ubuntu';
+    font-size: 20px;
+}
+p {
+    font-family: 'Ubuntu';
+    font-size: medium;
+    font-weight: 300;
+}
+
+.grid {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 50px;
+}
+.grid-item {
+    padding: 20px;
+    padding-bottom: 0px;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #FFF;
+    border-width: 40px;
+    border-color: rgb(70, 70, 70);
+    border-radius: 25px;
+
+    max-width: 400px;
+}
+
+.modal-content {
+    border-radius: 25px;
+}
