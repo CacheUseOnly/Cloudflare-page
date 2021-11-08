@@ -58,6 +58,10 @@
                 <div class="modal-body">
                     <form name="post-form">
                         <div class="mb-3">
+                            <label for="post-title" class="col-form-label">Image:</label>
+                            <input type="file" class="form-control" id="post-image" onchange="toBase64(this)">
+                        </div>
+                        <div class="mb-3">
                             <label for="post-title" class="col-form-label">Title:</label>
                             <input type="text" class="form-control" id="post-title">
                         </div>

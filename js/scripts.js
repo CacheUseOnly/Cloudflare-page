@@ -10,6 +10,7 @@ var msnry;
 const api = "https://general-assignment.cacheuseonly.workers.dev/posts"
 var KVCursor = null;
 var completed = false;
+var imgBase64 = null;
 
 init = () => {
     grid = document.querySelector('.grid');
@@ -30,11 +31,18 @@ async function getPosts(callback) {
     })
 }
 
-appendPost = (title, content) => {
+appendPost = (image, title, content) => {
+    existImg = (image !== undefined)
     var fragment = document.createDocumentFragment();
     var div = document.createElement("div");
     div.setAttribute("class", "grid-item");
 
+    if (existImg) {
+        let img = document.createElement("img")
+        img.setAttribute("src", image)
+        img.setAttribute("class", "img-fluid")
+        div.appendChild(img)
+    }
     let b = document.createElement("b")
     b.append(title)
     let p = document.createElement("p")
@@ -68,7 +76,7 @@ async function loadMore() {
                 data.push(JSON.parse(posts[i]))
             }
             for (var i = 0; i < len; ++i) {
-                appendPost(data[i]["title"], data[i]["content"])
+                appendPost(data[i]["image"], data[i]["title"], data[i]["content"])
             }
         });
     }
@@ -77,7 +85,8 @@ async function loadMore() {
 submitForm = () => {
     let Title = $("#post-title").val();
     let Content = $("#post-content").val();
-    var data = { title: Title, content: Content }
+    let img = imgBase64
+    var data = { title: Title, content: Content, image: img }
     $.ajax({
         type: "POST",
         url: api,
@@ -89,4 +98,14 @@ submitForm = () => {
         },
         dataType: "json",
     })
+}
+
+function toBase64(element) {
+    var file = element.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        console.log('RESULT', reader.result)
+        imgBase64 = reader.result
+    }
+    reader.readAsDataURL(file);
 }

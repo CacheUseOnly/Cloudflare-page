@@ -12,6 +12,9 @@ p {
     font-size: medium;
     font-weight: 300;
 }
+img {
+    margin-bottom: 5px;
+}
 
 .grid {
     padding-left: 10px;
